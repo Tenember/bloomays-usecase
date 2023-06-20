@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import logo from "./bloomays-logo.svg";
+import "./App.css";
+import LeavingArrivingBloomers from "./components/LeavingArrivingBloomers/LeavingArrivingBloomers";
 
 function App() {
+  const [showPopup, setShowPopup] = useState(false);
+
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p>Bloomays use case</p>
+        <button onClick={togglePopup}>Open Popup</button>
       </header>
+
+      {showPopup && <LeavingArrivingBloomers onClose={togglePopup} />}
     </div>
   );
 }
